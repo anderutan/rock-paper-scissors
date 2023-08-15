@@ -1,60 +1,39 @@
-const option = ["rock", "paper", "scissors"];
+// computer will return randomly either 'Rock', 'Paper', or 'Scissors
+function getComputerChoice() {
+    let option = ["Rock", "Paper", "Scissors"];
 
-// program to get random choice from an array
+    let choice = option[(Math.floor(Math.random() * option.length))];
 
-function getComputerChoice(choice) {
-    
-    // get random index value
-    const randomIndex = Math.floor(Math.random() * choice.length);
-
-    // get random choice
-    const oneOfChoice = choice[randomIndex];
-
-    return oneOfChoice;
-};
-
-// computer selection randomly
-const computerSelection = getComputerChoice(option);
-
-// ask user to pick rock, paper or scissor
-const askPlayerSelection = prompt("Please enter your choice:", "Rock, Paper and Scissor");
-
-// convert user choice to lower case
-const playerSelection = askPlayerSelection.toLowerCase()
-
-// function for single round game
-function singleRound(playerSelection, computerSelection) {
- 
-    // If player choose = computer choose then print draw
-    if (playerSelection === computerSelection){
-    return `Draw, you choose ${playerSelection} computer choose ${computerSelection}`;
-    } 
-    
-    // if player/computer choose rock/scissors, paper/rock, scissors/paper then
-    // print player win
-    else if 
-    (playerSelection === 'rock' && computerSelection === 'scissors') {
-        return `You Win! ${playerSelection} beat ${computerSelection}`;
-    } 
-    else if
-    (playerSelection === 'paper' && computerSelection === 'rock'){
-        return `You Win! ${playerSelection} beat ${computerSelection}`;
-    }
-    else if 
-    (playerSelection === 'scissors' && computerSelection === 'paper'){
-        return `You Win! ${playerSelection} beat ${computerSelection}`;
-    }  
-
-    // if player/computer choose rock/paper, paper/scissors, scissors/rock then 
-    // print player lose
-    else {
-        return `You Lose! ${computerSelection} beat ${playerSelection}`;
-    }  
+    return choice;
 }
 
+// function capitalize first character of string and lower case the rest.
+function capitalize(str){
+    const lower = str.toLowerCase()
+    return str.charAt(0).toUpperCase() + lower.slice(1)
+} 
 
+// single round of Rock Paper Scissors between player and computer.
+let result;
 
+function singleRound(playerSelection, computerSelection) {
+    let player = capitalize(playerSelection);
+    let computer = computerSelection;
 
-console.log(singleRound(playerSelection, computerSelection))
-
+    // Player win case and result
+    if (player == "Rock" && computer == "Scissors" || 
+        player == "Paper" && computer == "Rock" ||
+        player == "Scissors" && computer == "Paper") {
+            return result = "win" ;
+            alert(`You Win! ${player} beats ${computer}!`);
+        } else if ( player == "Rock" && computer == "Paper" ||
+                    player == "Paper" && computer == "Scissor" ||
+                    player == "Scissor" && computer == "Rock") {
+                        return result = "lose";
+                        alert(`You Lose! ${computer} beats ${player}!`);
+        } else {
+            return result = "draw";
+            alert("This round is draw!");
+        }
+}
 
